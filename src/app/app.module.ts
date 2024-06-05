@@ -7,17 +7,37 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyNavComponent } from './my-nav/my-nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MyNavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatBadgeModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
