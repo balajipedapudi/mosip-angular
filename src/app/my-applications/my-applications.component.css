@@ -1,0 +1,16 @@
+.app-card{
+    height: 253px;
+    border-radius: 10px;
+}
+
+.app-card h5{
+    font-size: 14px;
+}
+
+.app-card-footer h6{
+    font-size: 10px;
+}
+
+.card-con h5{
+    color: rgba(91, 74, 74, 1);
+}
