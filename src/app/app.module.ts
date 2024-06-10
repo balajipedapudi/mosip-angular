@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import { NgOtpInputModule } from  'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatIconModule,
     MatListModule,
     MatBadgeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgOtpInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
