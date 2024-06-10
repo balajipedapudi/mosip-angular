@@ -20,6 +20,7 @@ import { NgOtpInputModule } from  'ng-otp-input';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatBadgeModule,
     MatTooltipModule,
     HttpClientModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

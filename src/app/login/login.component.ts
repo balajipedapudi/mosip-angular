@@ -4,6 +4,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { MyApplicationsComponent } from '../my-applications/my-applications.component';
 import { Router } from '@angular/router';
 import { MyNavComponent } from '../my-nav/my-nav.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   public showSendBtn:boolean=true;
   public timer: number = 0;
   private interval: any;
-  constructor(private formBuilder: FormBuilder, private router:Router, private comp:MyNavComponent) { }
+  constructor(private formBuilder: FormBuilder, private router:Router, private comp:MyNavComponent, private toastr:ToastrService) { }
 
   mobileOrEmailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -49,7 +50,7 @@ export class LoginComponent {
   sendOtp() {
     
     if (this.loginDetails.valid) {
-      
+     
       fetch("http://localhost:3000/otp")
         .then(res => res.json())
         .then(data => {
@@ -60,11 +61,14 @@ export class LoginComponent {
           this.startTimer(60);
         })
     } else {
-      alert("Invalid input");
+      this.toastr.error('Please Enter Valid Credentials');
     }
   }
 
   validateOtp() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
     localStorage.setItem('token','1234')
     console.log(this.otpDetails.value.otp);
     this.comp.isShow=true;
@@ -78,6 +82,7 @@ export class LoginComponent {
   }
 
   startTimer(seconds: number) {
+    
     this.timer = seconds;
     this.interval = setInterval(() => {
       this.timer--;
@@ -85,6 +90,7 @@ export class LoginComponent {
         clearInterval(this.interval);
          this.showResendBtn=true;
         this.showOtp=false;
+        this.toastr.info('Please Resend OTP');
       }
     }, 1000);
   }
