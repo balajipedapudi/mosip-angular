@@ -30,18 +30,19 @@ import { Router } from '@angular/router';
 
 })
 export class MyNavComponent implements OnInit {
+  public isShow=false;
 constructor(private router:Router){
-//  if(localStorage.getItem('token') &&localStorage.getItem('token')!='undefined'){
-  if(localStorage.getItem('token')){
-  this.isShow=true;
- }else{
-  this.isShow=false
- }
+
+//   if(localStorage.getItem('token')){
+//   this.isShow=true;
+//  }else{
+//   this.isShow=false
+//  }
 }
   ngOnInit(): void {
   
   }
-  public isShow=false;
+  
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

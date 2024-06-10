@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
+import { NgOtpInputModule } from  'ng-otp-input';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,7 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatBadgeModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    NgOtpInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
