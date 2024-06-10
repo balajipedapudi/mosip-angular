@@ -1,6 +1,7 @@
 .app-card{
-    height: 253px;
+    height: fit-content;
     border-radius: 10px;
+    background: rgba(244, 244, 244, 1);
 }
 
 .app-card h5{
@@ -13,4 +14,29 @@
 
 .card-con h5{
     color: rgba(91, 74, 74, 1);
+}
+
+.card-foot h5{
+    margin-left: 8px;
+    margin-bottom: 0px;
+}
+.card-footer-bg{
+    background-color: rgba(15, 104, 178, 1);
+    color: white;
+    border-radius: 0px 0px 10px 10px;
+    padding: 12px;
+}
+
+.card-header-bg{
+    padding: 12px;
+    padding-bottom: 0px;
+}
+.card-header{
+    background: rgba(217, 217, 217, 1);
+    border-radius: 10px 10px 0px 0px;
+    padding: 12px;
+    border-bottom:none;
+}
+.card-header h5{
+    margin-bottom: 0px;
 }
