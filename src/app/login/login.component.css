@@ -4,6 +4,12 @@
     margin-bottom: 15px;
    
   }
+  .user-input{
+    font-size:14px;
+  }
+  .timer{
+    color:red;
+  }
   ::ng-deep .box{
     width: 30px !important;
     height: 30px !important;

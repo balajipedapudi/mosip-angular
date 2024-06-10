@@ -33,11 +33,11 @@ export class MyNavComponent implements OnInit {
   public isShow=false;
 constructor(private router:Router){
 
-//   if(localStorage.getItem('token')){
-//   this.isShow=true;
-//  }else{
-//   this.isShow=false
-//  }
+  if(localStorage.getItem('token')){
+  this.isShow=true;
+ }else{
+  this.isShow=false
+ }
 }
   ngOnInit(): void {
   
@@ -50,12 +50,10 @@ constructor(private router:Router){
       map(result => result.matches),
       shareReplay()
     );
-  public displayPic = sessionStorage.getItem('profilePic');
-  public displayName=sessionStorage.getItem('userName');
+
   
    logout(){
      localStorage.removeItem('token');
-     localStorage.removeItem('cookie');
     
     this.isShow=false
     this.router.navigate(['/login'])

@@ -1,5 +1,6 @@
 
 <div class="container" style="height: 100vh;">
+
     <div class="row d-flex justify-content-center align-items-center" style="height: 100%;">
         <!-- <div class="col-sm-12 d-flex justify-content-center align-items-center"> -->
             <div class="col-sm-12 col-md-6" style="height: 300px;">
@@ -12,7 +13,7 @@
             </div>
                <form [formGroup]="loginDetails" style="width:80%" class="d-flex flex-column">
                 <div class="form-group">
-                  <input type="text" id="mobileNum_email" class="form-control" placeholder="abc@example.com or xxxxxxxxxx" formControlName="mobileNum_email" aria-label="mobileNum_email" aria-describedby="basic-addon1">
+                  <input type="text" id="mobileNum_email" class="form-control user-input" placeholder="abc@example.com or xxxxxxxxxx" formControlName="mobileNum_email" aria-label="mobileNum_email" aria-describedby="basic-addon1">
                 </div>
                 
                 <button *ngIf="showSendBtn" class="btn btn-dark" style="width:100%; margin-top:15px; border:none;" (click)="sendOtp()">Send OTP</button>
@@ -22,8 +23,8 @@
               <div *ngIf="showOtp">   
                 <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:6, inputClass:'box'}"></ng-otp-input>
                 <button class="btn btn-dark" style="width:100%; margin-top:15px; border:none;" (click)="validateOtp()"[disabled]="!otpDetails.valid">Validate OTP</button>
-                <div *ngIf="timer > 0" class="mt-3">
-                  <p>Time remaining: {{ minutes }}:{{ seconds | number: '2.0' }}</p>
+                <div *ngIf="timer > 0" class="mt-3 d-flex justify-content-center">
+                  <p>Time remaining: <span class="timer">{{ minutes }}:{{ seconds | number: '2.0' }}</span></p>
                 </div>
               </div>
             </form>

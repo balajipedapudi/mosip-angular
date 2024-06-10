@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { MyApplicationsComponent } from '../my-applications/my-applications.component';
+import { Router } from '@angular/router';
+import { MyNavComponent } from '../my-nav/my-nav.component';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,7 @@ export class LoginComponent {
   public showSendBtn:boolean=true;
   public timer: number = 0;
   private interval: any;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router:Router, private comp:MyNavComponent) { }
 
   mobileOrEmailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -44,7 +47,9 @@ export class LoginComponent {
   });
 
   sendOtp() {
+    
     if (this.loginDetails.valid) {
+      
       fetch("http://localhost:3000/otp")
         .then(res => res.json())
         .then(data => {
@@ -60,7 +65,10 @@ export class LoginComponent {
   }
 
   validateOtp() {
+    localStorage.setItem('token','1234')
     console.log(this.otpDetails.value.otp);
+    this.comp.isShow=true;
+    this.router.navigate(['myApplications'])
     
   }
   onOtpChange(otp: any) {
