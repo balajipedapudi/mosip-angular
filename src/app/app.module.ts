@@ -17,12 +17,17 @@ import { MatListModule } from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import { NgOtpInputModule } from  'ng-otp-input';
+import { MyApplicationsComponent } from './my-applications/my-applications.component';
+import { CardComponent } from './card/card.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MyNavComponent
+    MyNavComponent,
+    MyApplicationsComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
