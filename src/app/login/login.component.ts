@@ -5,6 +5,7 @@ import { MyApplicationsComponent } from '../my-applications/my-applications.comp
 import { Router } from '@angular/router';
 import { MyNavComponent } from '../my-nav/my-nav.component';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
   public showSendBtn:boolean=true;
   public timer: number = 0;
   private interval: any;
-  constructor(private formBuilder: FormBuilder, private router:Router, private comp:MyNavComponent, private toastr:ToastrService) { }
+  constructor(private formBuilder: FormBuilder, private router:Router, private comp:MyNavComponent, private toastr:ToastrService, private logInServices:LoginService) { }
 
   mobileOrEmailValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -50,16 +51,18 @@ export class LoginComponent {
   sendOtp() {
     
     if (this.loginDetails.valid) {
-     
-      fetch("http://localhost:3000/otp")
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
+     this.logInServices.login().subscribe({
+      next:(res)=>{
+          console.log(res);
           this.showSendBtn=false;
           this.showResendBtn=false;
           this.showOtp = true;
           this.startTimer(60);
-        })
+      },
+      error:(err)=>{
+        this.toastr.error('Something went wrong!');
+      }
+     })
     } else {
       this.toastr.error('Please Enter Valid Credentials');
     }

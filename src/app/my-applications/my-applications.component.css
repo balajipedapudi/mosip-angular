@@ -24,7 +24,7 @@
     margin-bottom: 0px;
 }
 .card-footer-bg{
-    background-color: rgba(15, 104, 178, 1);
+    /* background-color: rgba(15, 104, 178, 1); */
     color: white;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
@@ -35,10 +35,10 @@
     padding-bottom: 0px;
 }
 .card-header{
-    background: rgba(217, 217, 217, 1);
+    background: rgba(244, 244, 244, 1);
     border-radius: 10px 10px 0px 0px;
     padding: 5px;
-    border-bottom:none;
+    border-bottom:1px solid lightgray;
 }
 .card-header h5{
     margin-bottom: 0px;
@@ -47,4 +47,34 @@ mat-icon{
     font-size: 20px;
     display: flex;
     align-items: center;
+}
+.booked{
+    color:#088E2E !important;
+}
+.appIncomplete{
+    color:#CD730A !important;
+}
+.pending{
+    color:#CD730A !important;
+}
+.expired{
+    color:#AE0D0D  !important;
+}
+.cancelled{
+    color:#AE0D0D  !important;
+}
+.bookedFooter{
+    background-color:#088E2E !important;
+}
+.appIncompleteFooter{
+    background-color:#CD730A !important;
+}
+.pendingFooter{
+    background-color:#CD730A !important;
+}
+.expiredFooter{
+    background-color:#AE0D0D  !important;
+}
+.cancelledFooter{
+    background-color:#AE0D0D  !important;
 }

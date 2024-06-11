@@ -25,4 +25,39 @@ export class MyApplicationsComponent implements OnInit{
     })
   }
   
+  getStatusClass(result:any){
+    
+if(result=='Application Incomplete'){
+  return 'appIncomplete';
+}else if(result=='Booked'){
+ return 'booked';
+}else if(result=='Pending Appointment'){
+  return 'pending';
+ }else if(result=='Expired'){
+  return 'expired';
+ }else if(result=='Cancelled'){
+  return 'cancelled';
+ }
+else {
+  return ''
+}
+  }
+  getFooterBgClass(result:any){
+    console.log(result);
+    
+    if(result=='Application Incomplete'){
+      return 'appIncompleteFooter';
+    }else if(result=='Booked'){
+     return 'bookedFooter';
+    }else if(result=='Pending Appointment'){
+      return 'pendingFooter';
+     }else if(result=='Expired'){
+      return 'expiredFooter';
+     }else if(result=='Cancelled'){
+      return 'cancelledFooter';
+     }
+    else {
+      return ''
+    }
+  }
 }
