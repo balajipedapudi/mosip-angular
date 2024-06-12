@@ -10,7 +10,13 @@ export class CreateApplicationComponent {
   firstFormGroup = this._formBuilder.group({
     title: ['', Validators.required],
     name:['', Validators.required],
-    gender:['',Validators.required]
+    gender:['',Validators.required],
+    date:[''],
+    nationality:['',Validators.required],
+    confirmation:['', Validators.required]
+
+
+
 
   });
   secondFormGroup = this._formBuilder.group({
@@ -44,6 +50,47 @@ export class CreateApplicationComponent {
       id:3,
       name:"Others"
     }
+  ];
+  nationalities:any=[
+    {
+      id:1,
+      name:"Indian"
+    },
+    {
+      id:2,
+      name:"American"
+    },
+    {
+      id:3,
+      name:"Britian"
+    }
+  ];
+
+  confirmations:any=[
+    {
+      id:1,
+      name:"Yes",
+      value:true
+    },
+    {
+      id:2,
+      name:"No",
+      value:false
+    }
+  ];
+  placeOfBirth:any=[
+    {
+      id:1,
+      name:"New Delhi",
+    },
+    {
+      id:2,
+      name:"Mumbai",
+    },
+    {
+      id:2,
+      name:"Andhra Pradesh",
+    },
   ];
 
   constructor(private _formBuilder: FormBuilder) {}

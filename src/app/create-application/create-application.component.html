@@ -1,9 +1,9 @@
 
 <div class="container">
-<mat-stepper #stepper>
+<mat-stepper #stepper linear="true">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Demographic Details</ng-template>
         <div class="row">
             <div class="col-sm-4">
                 <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
@@ -22,6 +22,15 @@
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
+                <mat-form-field appearance="outline" style="width:100%;">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <div class="col-sm-4">
                 <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
                     <mat-label>Gender</mat-label>
                     <mat-select formControlName="gender">
@@ -31,6 +40,36 @@
                     </mat-select>
                 </mat-form-field>
             </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Nationality</mat-label>
+                    <mat-select formControlName="nationality">
+                      <mat-option *ngFor="let nationality of nationalities" [value]="nationality.name">
+                        {{nationality.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>I was born in Morocco</mat-label>
+                    <mat-select formControlName="confirmation">
+                      <mat-option *ngFor="let confirmation of confirmations" [value]="confirmation.value">
+                        {{confirmation.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Place of Birth</mat-label>
+                    <mat-select formControlName="confirmation">
+                      <mat-option *ngFor="let confirmation of placeOfBirth" [value]="confirmation.name">
+                        {{confirmation.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
 
         </div>
         <div>
@@ -40,7 +79,7 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
+        <ng-template matStepLabel>Upload Documents</ng-template>
         <mat-form-field appearance="outline">
           <mat-label>Address</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
@@ -53,12 +92,20 @@
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
+      <ng-template matStepLabel>Book Appointment</ng-template>
       <p>You are now done.</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Confirmation</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
   </mat-stepper>
 </div>

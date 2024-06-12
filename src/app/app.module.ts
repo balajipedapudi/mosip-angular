@@ -28,6 +28,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     NgxSkeletonLoaderModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
