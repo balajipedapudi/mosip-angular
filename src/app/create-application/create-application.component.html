@@ -1,6 +1,6 @@
 
-<div class="container">
-<mat-stepper #stepper linear="true">
+<div class="container" style="min-height: 90vh;">
+<mat-stepper #stepper linear="true" class="mt-5">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Demographic Details</ng-template>
