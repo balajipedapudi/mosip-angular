@@ -17,7 +17,7 @@ import { MatListModule } from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import { NgOtpInputModule } from  'ng-otp-input';
-import { MyApplicationsComponent } from './my-applications/my-applications.component';
+import { MyApplicationsComponent, TermsAndconditionsDialog } from './my-applications/my-applications.component';
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -25,6 +25,9 @@ import { CreateApplicationComponent } from './create-application/create-applicat
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     MyNavComponent,
     MyApplicationsComponent,
     CardComponent,
-    CreateApplicationComponent
+    CreateApplicationComponent,
+    TermsAndconditionsDialog
   ],
   imports: [
     BrowserModule,
@@ -54,8 +58,10 @@ import {MatSelectModule} from '@angular/material/select';
     ToastrModule.forRoot(),
     MatStepperModule,
     MatInputModule,
-    MatSelectModule
-  
+    MatSelectModule,
+    NgxSkeletonLoaderModule,
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

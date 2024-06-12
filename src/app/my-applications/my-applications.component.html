@@ -1,14 +1,101 @@
-<div class="container mt-3 vh-100">
-    <div class="row gx-3 gy-4 d-flex">
+<div class="container mt-3" style="min-height: 100vh;" *ngIf="showParent">
+    <div class="item" *ngIf="isLoading">
+        <!-- <ngx-skeleton-loader
+        count="8"
+        appearance="circle"
+        [theme]="{
+          width: '260px',
+          height: '210px',
+          'border-radius': '10px',
+          'background-color':'rgb(222, 222, 228)'
+        }"
+      >
+      </ngx-skeleton-loader> -->
+    <div class="row gy-3 gx-3">
+            <div class="col-sm-12 col-md-3" *ngFor="let _ of repeatArray">
+                <div class="skeleton-loader">
+                <div class="first-section-wrapper">
+                  <div class="gravatar-title">
+                    <div class="d-flex justify-content-between align-items-center skeleton-card-header">
+                       
+                      <ngx-skeleton-loader
+                        [theme]="{
+                          width: '200px',
+                          'border-radius': '10px',
+                          height: '15px',
+                          'margin-bottom': '0px'
+                        }"
+                      ></ngx-skeleton-loader>
+                      <ngx-skeleton-loader
+                      appearance="circle"
+                      [theme]="{ width: '25px', height: '25px','border-radius':'50%' }"
+                    >
+                    </ngx-skeleton-loader>
+                    </div><hr style="margin:0px;">
+                    <div style="padding:10px">
+                     <ngx-skeleton-loader
+                        [theme]="{ width: '200px', 'border-radius': '10px', height: '15px' }"
+                      >
+                      </ngx-skeleton-loader>
+                      <!--  <ngx-skeleton-loader
+                        [theme]="{ width: '200px', 'border-radius': '0', height: '15px' }"
+                      >
+                      </ngx-skeleton-loader> -->
+                      <ngx-skeleton-loader
+                        [theme]="{ width: '200px', 'border-radius': '10px', height: '15px' }"
+                      >
+                      </ngx-skeleton-loader>
+                      <ngx-skeleton-loader
+                        [theme]="{ width: '200px', 'border-radius': '10px', height: '15px','margin-bottom':'0px' }"
+                      >
+                      </ngx-skeleton-loader>
+                    </div><hr style="margin:0px;">
+                    <div class="d-flex justify-content-between align-items-center" style="padding-left: 10px;">
+                        <ngx-skeleton-loader
+                        [theme]="{
+                          width: '90px',
+                          'border-radius': '5px',
+                          height: '10px',
+                          'margin-bottom': '0px'
+                        }"
+                      ></ngx-skeleton-loader>
+                      <ngx-skeleton-loader
+                        [theme]="{
+                          width: '90px',
+                          'border-radius': '5px',
+                          height: '10px',
+                          'margin-bottom': '0px'
+                        }"
+                      ></ngx-skeleton-loader>
+                      <ngx-skeleton-loader
+                      appearance="circle"
+                      [theme]="{ width: '25px', height: '25px','border-radius':'50%' }"
+                    >
+                    </ngx-skeleton-loader>
+                      </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+    </div>  
+      
+      </div>
+      <div *ngIf="!isLoading">
+        <div class="row">
+            <div class="col-sm-12 d-flex justify-content-end">
+                <button mat-button class="create_btn" (click)="openDialog()">Create Application</button>
+            </div>
+        </div>
+    <div class="row gx-3 gy-4 d-flex mt-1">
         <div class="col-sm-12 col-md-3 " *ngFor="let card of appCards">
             <div class="app-card shadow">
                 <div class="d-flex card-header">
-                    <div class="col-sm-10 d-flex align-items-center justify-content-start">
-                        <h5>Application No:15005468899</h5>
+                    <div class="col-sm-10 d-flex align-items-center justify-content-start card-header-text">
+                        <h5>15005468899</h5>
                     </div>
                     <div class="col-sm-2 d-flex align-items-center justify-content-end">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="lock_open" class="material-symbols-outlined"></mat-icon>
-                    </div>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon={{getIcon(card.appstat)}} class="material-symbols-outlined"></mat-icon>
+                     </div>
                 </div>
                 <div class="d-flex card-header-bg">
                     <div class="col-sm-12 card-con">
@@ -23,20 +110,22 @@
                 </div>
                 <div class="d-flex card-footer-bg" [ngClass]="getFooterBgClass(card.appstat)">
                     <div class="col-10 d-flex">
-                        <div class="col-6 d-flex card-foot align-items-center">
+                        <div class="col-5 d-flex card-foot align-items-center">
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit_note" class="material-symbols-outlined"></mat-icon>
-                            <h5>Modify</h5>
+                            <h5>{{card.appstat=='Pending Appointment'|| card.appstat=='Application Incomplete'?'Modify Info':'View Info'}}</h5>
                         </div> 
-                        <div class="d-flex col-6 card-foot align-items-center">
+                        <div class="d-flex col-7 card-foot align-items-center" *ngIf="viewAcc(card.appstat)">
                             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="eye_tracking" class="material-symbols-outlined"></mat-icon>
-                            <h5>View</h5>
+                            <h5>View Acknowledgement</h5>
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-end">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete" class="material-symbols-outlined"></mat-icon>
+                        <mat-icon *ngIf="card.appstat!='Expired'" aria-hidden="false" aria-label="Example home icon" fontIcon="delete" class="material-symbols-outlined"></mat-icon>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+  </div>
 </div>
+<router-outlet *ngIf="!showParent"></router-outlet>

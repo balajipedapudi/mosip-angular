@@ -113,7 +113,9 @@
 .menu-card{
   width: 50px;
 }
- 
+ .content-bg{
+  background-color: #eff2ff6e;
+ }
 /* :host ::ng-deep .mat-drawer-content,
 :host ::ng-deep .mat-sidenav-content {
     overflow: hidden;

@@ -9,7 +9,7 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content style="background-color: white;">
+  <mat-sidenav-content class="content-bg">
     <mat-toolbar color="primary" *ngIf="isShow">
       <button type="button" style="color: black;" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">

@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 mat-dialog-title class="title-text">Terms and conditions</h2>
+            
+        </div>
+    </div><hr class="ruler">
+    <mat-dialog-content class="mat-typography">
+    <div class="row">
+        <p class="content">I understand that the data collected about me during pre-registration by the said authority includes my Name, Date of Birts, Gender, Address, Contact details, Documents.
+            I also understand that this information will be stored and processed for the purpose of verifying my identity in order to access various services, or to comply with legal obligation.
+            I give my concern to collection of this data for this purpose.
+        </p>
+
+    </div>
+</mat-dialog-content>
+    <div class="d-flex justify-content-between" [formGroup]="checkbox">
+        <mat-checkbox color="primary" formControlName="terms_con_check"(change)="setValue($event.checked)">Click To accept the Terms and conditions!</mat-checkbox>
+        <button mat-button class="cancel_btn"  (click)="onNoClick()" [disabled]="checkedValue">Accept</button>
+    </div>
+</div>
+<!-- <mat-dialog-content class="mat-typography">
+    <h3>Terms and conditions</h3>
+    <p>
+        I understand that the data collected about me during pre-registration by the said authority includes my-.Name . Date of Birts . Gender .Address .Contact details . Documents
+        I also understand that this information will be stored and processed for the purpose of verifying my identity in order to access various services, or to comply with legal obligation.
+        I give my concern to collection of this data for this purpose.
+    </p>
+  
+  </mat-dialog-content>
+  <mat-dialog-actions align="start">
+      <mat-checkbox color="primary" formControlName="terms_con_check"(change)="setValue($event.checked)">Click To accept the Terms and conditions!</mat-checkbox>
+        
+  </mat-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-button class="cancel_btn"  (click)="onNoClick()" [disabled]="checkedValue">Accept</button>
+     </mat-dialog-actions> -->
+  
+  
+  
+    
+

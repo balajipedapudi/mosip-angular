@@ -1,7 +1,8 @@
 .app-card{
     height: fit-content;
     border-radius: 10px;
-    background: rgba(244, 244, 244, 1);
+    /* background: rgba(244, 244, 244, 1); */
+    background: white;
 }
 
 .app-card h5{
@@ -18,10 +19,14 @@
 .card-con{
     padding-left: 10px;
 }
-
+.card-foot{
+    padding-left: 10px;
+}
 .card-foot h5{
     margin-left: 6px;
     margin-bottom: 0px;
+    font-size:10px;
+    line-height: 10px;
 }
 .card-footer-bg{
     /* background-color: rgba(15, 104, 178, 1); */
@@ -35,13 +40,17 @@
     padding-bottom: 0px;
 }
 .card-header{
-    background: rgba(244, 244, 244, 1);
+    /* background: rgba(244, 244, 244, 1); */
+    background: white;
     border-radius: 10px 10px 0px 0px;
     padding: 5px;
     border-bottom:1px solid lightgray;
 }
 .card-header h5{
     margin-bottom: 0px;
+}
+.card-header-text{
+    padding-left:10px;
 }
 mat-icon{
     font-size: 20px;
@@ -77,4 +86,17 @@ mat-icon{
 }
 .cancelledFooter{
     background-color:#AE0D0D  !important;
+}
+.skeleton-loader{
+    background-color:white;
+    width:280px;
+    border-radius:10px; 
+    width:100%
+}
+.skeleton-card-header{
+    padding-left:10px;
+}
+.create_btn{
+    background-color: rgba(15, 104, 178, 1);
+    color:white !important;
 }

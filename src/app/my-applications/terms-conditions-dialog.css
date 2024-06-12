@@ -1,0 +1,14 @@
+.cancel_btn{
+    background-color: rgba(15, 104, 178, 1);
+    color:white !important;
+}
+.title-text{
+    color:rgba(15, 104, 178, 1)
+}
+.ruler{
+    margin:0px;
+}
+.content{
+    font-size:14px;
+    text-align: justify;
+}
