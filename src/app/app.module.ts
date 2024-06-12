@@ -21,6 +21,10 @@ import { MyApplicationsComponent } from './my-applications/my-applications.compo
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { CreateApplicationComponent } from './create-application/create-application.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     MyNavComponent,
     MyApplicationsComponent,
-    CardComponent
+    CardComponent,
+    CreateApplicationComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,10 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     NgOtpInputModule,
     ToastrModule.forRoot(),
+    MatStepperModule,
+    MatInputModule,
+    MatSelectModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
