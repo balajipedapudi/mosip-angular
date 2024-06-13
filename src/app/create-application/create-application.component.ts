@@ -29,7 +29,16 @@ export class CreateApplicationComponent {
     gender:['',Validators.required],
     date:[''],
     nationality:['',Validators.required],
-    confirmation:['', Validators.required]
+    confirmation:['', Validators.required],
+    placeOfBirth:['',Validators.required],
+    birthPay:['',Validators.required],
+    region:['',Validators.required],
+    province:['',Validators.required],
+    city:['',Validators.required],
+    zone:['',Validators.required],
+    postalCode:['',Validators.required],
+    residenceStatus:['',Validators.required],
+    habitatType:['',Validators.required]
 
 
 
@@ -40,18 +49,9 @@ export class CreateApplicationComponent {
   });
 
   titles:any=[
-    {
-      id:1,
-      name:"Mr"
-    },
-    {
-      id:2,
-      name:"Miss"
-    },
-    {
-      id:3,
-      name:"Missus"
-    }
+    {id: 1,name: "Mr"},
+    {id: 2,name: "Miss"},
+    {id: 3,name: "Missus"}
   ];
   genders:any=[
     {
@@ -70,44 +70,99 @@ export class CreateApplicationComponent {
   nationalities:any=[
     {
       id:1,
-      name:"Indian"
+      name:"French"
     },
     {
       id:2,
-      name:"American"
+      name:"Egyptian"
     },
-    {
-      id:3,
-      name:"Britian"
-    }
   ];
 
   confirmations:any=[
     {
       id:1,
-      name:"Yes",
+      name:"Oui",
       value:true
     },
     {
       id:2,
-      name:"No",
+      name:"Non",
       value:false
     }
   ];
-  placeOfBirth:any=[
+  birthPlaces:any=[
     {
       id:1,
-      name:"New Delhi",
+      name:"Rabat-agdal",
     },
     {
       id:2,
-      name:"Mumbai",
-    },
-    {
-      id:2,
-      name:"Andhra Pradesh",
-    },
+      name:"Casa-Maarif",
+    }
   ];
+  birthPay:any=[
+    {
+      id:1,
+      name:"France",
+    },
+    {
+      id:2,
+      name:"Egypt",
+    }
+  ];
+  regions:any=[
+    {
+      id:1,
+      name:"Rabat Sale Kenitra",
+    }
+  ];
+  provinces:any=[
+    {id:1,name:"Kenitra",},
+    {id:2,name:"Rabat",}
+  ];
+  cities:any=[
+    {id:1,name:"Kenitra"},
+    {id:2,name:"Rabat"}
+  ];
+  zones:any=[
+    {id:1,name:"Ben Mansour",},
+    {
+      id:2,
+      name:"Mansara",
+    },
+    {
+      id:3,
+      name:"Mograne"
+    },
+    {
+      id:3,
+      name:"Assam"
+    },
+    {
+      id:3,
+      name:"Mehdia"
+    }
+    
+  ];
+
+  postalCodes:any=[
+    {id: 1,name: 14022},
+    {id: 2,name: 10110},
+    {id: 3,name: 10111},
+    {id: 3,name: 10113},
+  ];
+  residentTypes:any=[
+    {id: 1,name: "Foreigner"},
+    {id: 2,name: "Non-Foreigner"}
+  ];
+  habitatTypes:any=[
+    {id: 1,name: "individual"},
+    {id: 2,name: "Collective"},
+  ];
+
+
+
+
 
   constructor(private _formBuilder: FormBuilder) {}
 

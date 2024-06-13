@@ -60,16 +60,96 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <!-- <div class="col-sm-4">
+            <div class="col-sm-4">
                 <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
                     <mat-label>Place of Birth</mat-label>
-                    <mat-select formControlName="confirmation">
-                      <mat-option *ngFor="let confirmation of placeOfBirth" [value]="confirmation.name">
-                        {{confirmation.name}}
+                    <mat-select formControlName="placeOfBirth">
+                      <mat-option *ngFor="let placeOfBirth of birthPlaces" [value]="placeOfBirth.name">
+                        {{placeOfBirth.name}}
                       </mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div> -->
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Birth Pay</mat-label>
+                    <mat-select formControlName="birthPay">
+                      <mat-option *ngFor="let pay of birthPay" [value]="pay.name">
+                        {{pay.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Region</mat-label>
+                    <mat-select formControlName="region">
+                      <mat-option *ngFor="let region of regions" [value]="region.name">
+                        {{region.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Province</mat-label>
+                    <mat-select formControlName="province">
+                      <mat-option *ngFor="let province of provinces" [value]="province.name">
+                        {{province.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>City</mat-label>
+                    <mat-select formControlName="city">
+                      <mat-option *ngFor="let city of cities" [value]="city.name">
+                        {{city.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Zone</mat-label>
+                    <mat-select formControlName="zone">
+                      <mat-option *ngFor="let zone of zones" [value]="zone.name">
+                        {{zone.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Postal Code</mat-label>
+                    <mat-select formControlName="postalCode">
+                      <mat-option *ngFor="let code of postalCodes" [value]="code.name">
+                        {{code.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Residence Status</mat-label>
+                    <mat-select formControlName="residenceStatus">
+                      <mat-option *ngFor="let residentType of residentTypes" [value]="residentType.name">
+                        {{residentType.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+                    <mat-label>Habitat Type</mat-label>
+                    <mat-select formControlName="habitatType">
+                      <mat-option *ngFor="let habitatType of habitatTypes" [value]="habitatType.name">
+                        {{habitatType.name}}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
 
         </div>
         <div>
