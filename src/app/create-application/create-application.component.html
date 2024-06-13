@@ -1,6 +1,6 @@
 
 <div class="container" style="min-height: 90vh;">
-<mat-stepper #stepper linear="true" class="mt-5">
+<mat-stepper #stepper linear="false" class="mt-5">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Demographic Details</ng-template>
@@ -167,7 +167,7 @@
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext (click)="loadMap()">Next</button>
         </div>
       </form>
     </mat-step>
@@ -175,23 +175,53 @@
       <ng-template matStepLabel>Book Appointment</ng-template>
       <!-- <p>You are now done.</p> -->
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
+          <!-- <button mat-button (click)="resetMap()">Reset Map</button> -->
+          <!-- <button mat-button (click)="setNearbyCoordinates()">Nearby</button> -->
+          <button mat-button (click)="showRecommendCenters()">Recommended Centers</button>
+          <button mat-button (click)="showNearByCenters()">NearbyCenters</button>
+        </div>
+        <div class="col-sm-7">
+          <mat-nav-list>
+              <mat-radio-button *ngFor="let item of listOfCoordinates">
+                <div class="d-flex justify-content-between p-1 list-style" (click)="changeToNearbyCoordinates(item.latitude, item.longitude,item.place)">                       
+                  <div class="d-flex flex-column">
+                    <div class="d-flex">
+                      <span>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="location_on" class="material-symbols-outlined icon-size"></mat-icon>
+                      </span>
+                    <span>{{item.place}}</span>
+                  </div>
+                  <div class="d-flex">
+                    <span>
+                      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="call" class="material-symbols-outlined icon-size"></mat-icon>
+                    </span>
+                    <span>Ph-no 9876787650</span>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <span>Timing : 11:00AM - 6:00PM</span>
+                    <span>Lunch : 1:00PM - 2:00PM</span>
+                    <span>Currently Opened</span>
+                  </div>              
+              </div>
+              </mat-radio-button>
+          </mat-nav-list>
+         
+      </div>
+        <div class="col-sm-5">
             <div id="map"></div>
         </div>
-        <div class="col-sm-6">
-            <mat-nav-list>
-                <div *ngFor="let item of listOfCoordinates">
-                   <h5 style="cursor: pointer;" (click)="changeToNearbyCoordinates(item.latitude, item.longitude,item.place)">{{ item.place }}</h5>
-                </div>
-            </mat-nav-list>
-            <button (click)="resetMap()">Reset Map</button>
-            <button (click)="setNearbyCoordinates()">Nearby</button>
-        </div>
+        
     </div>
-      <div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+      <!-- <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
+      </div> -->
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Confirmation</ng-template>
@@ -202,4 +232,5 @@
         </div>
       </mat-step>
   </mat-stepper>
+ 
 </div>

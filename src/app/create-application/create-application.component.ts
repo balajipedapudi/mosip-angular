@@ -11,7 +11,8 @@ export class CreateApplicationComponent {
   private map!: L.Map;
   private center!: L.LatLng;
   private markers: L.Marker[] = [];
-  listOfCoordinates=[
+  listOfCoordinates:any=[];
+  initialListOfCoordinates=[
     {
       "place":"Hyderabad",
       "latitude":17.4065,
@@ -23,6 +24,19 @@ export class CreateApplicationComponent {
       "longitude":83.2185
     }
   ]
+   nearbyCenterCoordinates = [
+    { place: 'Uppal', latitude: 17.3984, longitude: 78.5583 },
+    { place: 'Habsiguda', latitude: 17.4066, longitude: 78.5438},
+    { place: 'LB Nagar', latitude: 17.3457, longitude: 78.5522},
+  ];
+  showRecommendCenters(){
+    this.listOfCoordinates=[];
+    this.listOfCoordinates=[...this.initialListOfCoordinates]
+  }
+  showNearByCenters(){
+    this.listOfCoordinates=[];
+    this.listOfCoordinates=[...this.nearbyCenterCoordinates]
+  }
   firstFormGroup = this._formBuilder.group({
     title: ['', Validators.required],
     name:['', Validators.required],
@@ -168,10 +182,14 @@ export class CreateApplicationComponent {
 
   // map 
   ngOnInit(): void{
+    this.listOfCoordinates=this.initialListOfCoordinates
     // setTimeout(()=>{
     //   this.initMap();
     // },2000)
-   this.initMap();
+    this.initMap();
+  }
+  loadMap(){
+    this.initMap();
   }
   private initMap(): void {
     this.map = L.map('map', {

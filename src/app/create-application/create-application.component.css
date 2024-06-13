@@ -6,6 +6,31 @@
     margin-top: 16px;
   }
   #map {
-    height: 400px;
+    height: 300px;
     width: 100% !important;
   }
+  .list-style{
+   
+    cursor: pointer;
+   
+  }
+  .icon-size{
+    font-size: 18px;
+    color:rgba(15, 104, 178, 1);
+  }
+  .list-style span{
+    font-size: 10px;
+  }
+  ::ng-deep .mdc-form-field{
+    width:100%;
+    border:1px solid lightgray;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  ::ng-deep .mdc-label{
+    width:100%;
+  }
+  ::ng-deep .leaflet-container{
+    border-radius: 20px;
+  }
+ 
