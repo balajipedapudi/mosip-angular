@@ -24,6 +24,7 @@
 
 
       <div class="nav-link" *ngIf="!(isHandset$ | async)">
+        <a routerLink="createApplication" routerLinkActive="active" class="nav-link-inserted"(click)="openDialog()">Create Application</a>
         <a routerLink="myApplications" routerLinkActive="active" class="nav-link-inserted">My Applications</a>
         <!-- <button mat-flat-button color="success" (click)="logout()" class="nav-link-inserted">Logout</button> -->
         <a routerLink="logout" routerLinkActive="active" class="nav-link-inserted" (click)="logout()">

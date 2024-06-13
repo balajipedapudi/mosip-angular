@@ -1,4 +1,4 @@
-<div class="container mt-3" style="min-height: 100vh;" *ngIf="showParent">
+<div class="container mt-3" style="min-height: 100vh;">
     <div class="item" *ngIf="isLoading">
         <!-- <ngx-skeleton-loader
         count="8"
@@ -81,11 +81,11 @@
       
       </div>
       <div *ngIf="!isLoading">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-sm-12 d-flex justify-content-end">
                 <button mat-button class="create_btn" (click)="openDialog()">Create Application</button>
             </div>
-        </div>
+        </div> -->
     <div class="row gx-3 gy-4 d-flex mt-1">
         <div class="col-sm-12 col-md-3 " *ngFor="let card of appCards">
             <div class="app-card shadow">
@@ -128,4 +128,4 @@
     </div>
   </div>
 </div>
-<router-outlet *ngIf="!showParent"></router-outlet>
+<!-- <router-outlet *ngIf="!showParent"></router-outlet> -->

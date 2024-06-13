@@ -8,8 +8,9 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'',redirectTo:'/login', pathMatch:'full'},
   {path:'myApplications', component:MyApplicationsComponent, children:[
-    {path:'createApplication', component:CreateApplicationComponent}
-  ]}
+    
+  ]},
+  {path:'createApplication', component:CreateApplicationComponent}
 ];
 
 @NgModule({

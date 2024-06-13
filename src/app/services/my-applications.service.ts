@@ -9,7 +9,7 @@ export class MyApplicationsService {
   constructor(private http:HttpClient) { }
 
   public getAppCards(){
-    const url = "http://10.175.1.66:3000/appCards";
+    const url = "http://localhost:3000/appCards";
     return this.http.get(url);
   }
 }

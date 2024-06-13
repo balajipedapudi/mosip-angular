@@ -13,7 +13,7 @@ export interface DialogData {
   styleUrls: ['./my-applications.component.css']
 })
 export class MyApplicationsComponent implements OnInit{
-  public showParent:boolean =true;
+  // public showParent:boolean =true;
   public isLoading:boolean=true;
   repeatArray = Array(8).fill(0);
   constructor(private appService:MyApplicationsService, public dialog: MatDialog, public router:Router,public route:ActivatedRoute){
@@ -35,12 +35,12 @@ export class MyApplicationsComponent implements OnInit{
         console.log(err);
       }
     })
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.showParent = this.router.url === '/myApplications';
-      }
-    });
-    this.showParent = this.router.url === '/myApplications';
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.showParent = this.router.url === '/myApplications';
+    //   }
+    // });
+    // this.showParent = this.router.url === '/myApplications';
   }
   
   getStatusClass(result:any){
@@ -109,37 +109,18 @@ else {
       return false
     }
   }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(TermsAndconditionsDialog, {
-      data: {
-        show:this.showParent
-      },
-      width:'620px',
-      height:'350px'
-    });
+ 
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if(result==true){
-        this.router.navigate(['createApplication'], {relativeTo: this.route})
-        this.showParent=false;
-      }
-      
-      console.log('The dialog was closed');
-     
-    });
-  }
+  // @HostListener('document:click', ['$event']) toggelOpen(event: Event) {
+  //   this.router.events.subscribe((event) => {
+  //     if (event instanceof NavigationEnd) {
+  //       if (this.router.url === '/myApplications') {
+  //         this.showParent = true;
+  //       }
+  //     }
+  //   });
 
-  @HostListener('document:click', ['$event']) toggelOpen(event: Event) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (this.router.url === '/myApplications') {
-          this.showParent = true;
-        }
-      }
-    });
-
-  }
+  // }
 }
 // dialouge
 
@@ -150,33 +131,3 @@ else {
 //   styleUrls:['terms-conditions-dialog.css']
 // })
 // export class TermsAndconditionsDialog {}
-@Component({
-  selector: 'TermsAndconditionsDialog',
-  templateUrl: 'terms-conditions-dialog.html',
-  styleUrls:['terms-conditions-dialog.css']
-})
-export class TermsAndconditionsDialog {
-  checkedValue:any=true;
-  constructor(
-    public dialogRef: MatDialogRef<TermsAndconditionsDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private formBuilder:FormBuilder
-  ) {}
-
-  onNoClick(): void {
-    console.log(this.data);
-    console.log(this.checkedValue);
-    
-    this.dialogRef.close(!this.checkedValue);
-    
-  }
-  
-  checkbox = this.formBuilder.group({
-    terms_con_check:false
-  });
-  setValue(val:any){
-    console.log(val);
-    
-    this.checkedValue=!val;
-  }
-}
