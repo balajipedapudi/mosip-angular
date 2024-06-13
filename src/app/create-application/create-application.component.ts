@@ -52,12 +52,27 @@ export class CreateApplicationComponent {
     zone:['',Validators.required],
     postalCode:['',Validators.required],
     residenceStatus:['',Validators.required],
-    habitatType:['',Validators.required]
-
-
-
-
+    habitatType:['',Validators.required],
+    portNo:[''],
+    apptNo:[''],
+    addressLine1:['', Validators.required],
+    cnie:['', Validators.required],
+    iHave:['',Validators.required],
+    foreignIdentityNum:['', Validators.required],
+    passport:['',Validators.required],
+    idcs:['',Validators.required],
+    birthCert:['',Validators.required],
+    digBirthCert:['',Validators.required],
+    phone:['',Validators.required],
+    email:['',Validators.required],
+    tutorTypes:[''],
+    introducerName:[''],
+    introducerUIN:[''],
+    introducerRID:[],
+    introducerCNIE:[],
+    relationship:[]
   });
+
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
@@ -173,10 +188,21 @@ export class CreateApplicationComponent {
     {id: 1,name: "individual"},
     {id: 2,name: "Collective"},
   ];
-
-
-
-
+  iHave:any=[
+    {id: 1,name: "Residence Card"},
+    {id: 2,name: "Passport"},
+  ];
+  idcs:any=[
+    {id: 1,name: "oui"},
+    {id: 2,name: "non"},
+  ];
+  tutorTypes:any=[
+    {id: 1,name: "juge de tuteur"}
+  ];
+  relationships:any=[
+    {id: 1,name: "juge de tuteur"},
+    {id: 1,name: "juge de tuteur"}
+  ]
 
   constructor(private _formBuilder: FormBuilder) {}
 
