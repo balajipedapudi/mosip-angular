@@ -1,0 +1,12 @@
+.preview-pad{
+    padding: 30px;
+}
+.button-style{
+    background-color: rgba(15, 104, 178, 1);
+    color:white;
+}
+.button-style-con{
+    background-color: rgba(15, 104, 178, 1);
+    color:white;
+    margin-right: 10px;
+}

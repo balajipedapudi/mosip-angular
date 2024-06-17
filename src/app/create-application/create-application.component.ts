@@ -1,16 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatStepper } from '@angular/material/stepper';
 import * as L from 'leaflet';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+export interface DialogData {
+ next: any;
+ details:{},
+ modify:''
+}
 
 @Component({
   selector: 'app-create-application',
   templateUrl: './create-application.component.html',
-  styleUrls: ['./create-application.component.css']
+  styleUrls: ['./create-application.component.css'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
+  ],
 })
 export class CreateApplicationComponent {
   private map!: L.Map;
   private center!: L.LatLng;
   private markers: L.Marker[] = [];
+  @ViewChild('stepper') stepper: MatStepper | any;
+ 
   listOfCoordinates:any=[];
   initialListOfCoordinates=[
     {
@@ -37,34 +53,35 @@ export class CreateApplicationComponent {
     this.listOfCoordinates=[];
     this.listOfCoordinates=[...this.nearbyCenterCoordinates]
   }
+  
   firstFormGroup = this._formBuilder.group({
     title: ['', Validators.required],
     name:['', Validators.required],
-    gender:['',Validators.required],
+    gender:[''],
     date:[''],
-    nationality:['',Validators.required],
-    confirmation:['', Validators.required],
-    placeOfBirth:['',Validators.required],
-    birthPay:['',Validators.required],
-    region:['',Validators.required],
-    province:['',Validators.required],
-    city:['',Validators.required],
-    zone:['',Validators.required],
-    postalCode:['',Validators.required],
-    residenceStatus:['',Validators.required],
-    habitatType:['',Validators.required],
+    nationality:[''],
+    confirmation:[''],
+    placeOfBirth:[''],
+    birthPay:[''],
+    region:[''],
+    province:[''],
+    city:[''],
+    zone:[''],
+    postalCode:[''],
+    residenceStatus:[''],
+    habitatType:[''],
     portNo:[''],
     apptNo:[''],
-    addressLine1:['', Validators.required],
-    cnie:['', Validators.required],
-    iHave:['',Validators.required],
-    foreignIdentityNum:['', Validators.required],
-    passport:['',Validators.required],
-    idcs:['',Validators.required],
-    birthCert:['',Validators.required],
-    digBirthCert:['',Validators.required],
-    phone:['',Validators.required],
-    email:['',Validators.required],
+    addressLine1:[''],
+    cnie:[''],
+    iHave:[''],
+    foreignIdentityNum:[''],
+    passport:[''],
+    idcs:[''],
+    birthCert:[''],
+    digBirthCert:[''],
+    phone:[''],
+    email:[''],
     tutorTypes:[''],
     introducerName:[''],
     introducerUIN:[''],
@@ -204,18 +221,19 @@ export class CreateApplicationComponent {
     {id: 1,name: "juge de tuteur"}
   ]
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder,public dialog: MatDialog) {}
 
   // map 
   ngOnInit(): void{
     this.listOfCoordinates=this.initialListOfCoordinates
-    // setTimeout(()=>{
-    //   this.initMap();
-    // },2000)
-    this.initMap();
   }
-  loadMap(){
-    this.initMap();
+ 
+  ngAfterViewInit(): void {
+    this.stepper.selectionChange.subscribe((event: any) => {
+      if (event.selectedIndex === 2) {
+        this.initMap();
+      }
+    });
   }
   private initMap(): void {
     this.map = L.map('map', {
@@ -291,4 +309,71 @@ showPosition(position:any) {
     this.map.setView([37.7749, -122.4194], 13);
   }
   // map end
+
+  // open dialog
+  openPreview(): void {
+    console.log(this.stepper);
+    
+    const dialogRef = this.dialog.open(PreviewDialog, {
+      data: {
+         details:this.firstFormGroup.value,
+         next:this.stepper,
+         
+      },
+      width:'1100px',
+      height:'500px'
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      console.log(result);
+      // if(result==true){
+      //   this.router.navigate(['createApplication'])
+      // }else{
+      //   this.router.navigate(['myApplications']) 
+      // }
+      
+      console.log('The dialog was closed');
+     
+    });
+  }
+}
+
+// preview dialog
+@Component({
+  selector: 'PreviewDialog',
+  templateUrl: 'preview-dialog.html',
+  styleUrls:['preview-dialog.css']
+})
+export class PreviewDialog {
+  public userDetails:any;
+  constructor(
+    public dialogRef: MatDialogRef<PreviewDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private formBuilder:FormBuilder
+  ) {}
+ngOnInit(){
+  console.log(this.data);
+  this.userDetails=this.data.details;
+  
+}
+goToBookAppointment() {
+  
+  this.data.next.selectedIndex = 2;
+  this.dialogRef.close(this.data.next.selectedIndex); 
+}
+goToDemographicDetails(){
+  this.data.next.selectedIndex = 0;
+  this.dialogRef.close(this.data.next.selectedIndex); 
+}
+  onNoClick(): void {
+    
+    this.dialogRef.close();
+    
+  }
+  
+  checkbox = this.formBuilder.group({
+    terms_con_check:false
+  });
+  setValue(val:any){
+  }
 }

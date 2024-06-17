@@ -1,8 +1,9 @@
 <div class="container" style="min-height: 90vh;">
-  <mat-stepper #stepper linear="false" class="mt-5">
-    <mat-step [stepControl]="firstFormGroup">
+  <mat-stepper #stepper linear="true" class="mt-5">
+    <!-- <mat-step [stepControl]="firstFormGroup"> -->
+    <mat-step [stepControl]="firstFormGroup"label="Demographic Details" state="description">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Demographic Details</ng-template>
+        <!-- <ng-template matStepLabel>Demographic Details</ng-template> -->
         <div class="row">
           <div class="col-sm-4">
             <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
@@ -282,26 +283,33 @@
 
 
         </div>
-        <div>
+        <div class="button-position1">
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
+    <!-- <mat-step [stepControl]="secondFormGroup"> -->
+    <mat-step [stepControl]="secondFormGroup"label="Upload Documents" state="cloud_upload">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Upload Documents</ng-template>
+        <!-- <ng-template matStepLabel>Upload Documents</ng-template> -->
         <mat-form-field appearance="outline">
           <mat-label>Address</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
         </mat-form-field>
-        <div>
+        <div class="button-position">
+          <div class="col-sm-10">
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext (click)="loadMap()">Next</button>
+        </div>
+          <div class="col-sm-2 d-flex justify-content-between">
+          <button mat-button (click)="openPreview()">Preview</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
         </div>
       </form>
     </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Book Appointment</ng-template>
+    <!-- <mat-step> -->
+    <mat-step label="Book Appointment" state="share_location">
+      <!-- <ng-template matStepLabel>Book Appointment</ng-template> -->
       <!-- <p>You are now done.</p> -->
       <div class="row">
         <div class="col-sm-12">
@@ -343,7 +351,7 @@
         </div>
         
     </div>
-    <div>
+    <div class="button-position">
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
     </div>
@@ -352,14 +360,29 @@
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div> -->
     </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Confirmation</ng-template>
+    <mat-step label="Confirmation" state="check_circle">
+    <!-- <mat-step> -->
+      <!-- <ng-template matStepLabel>Confirmation</ng-template> -->
       <p>You are now done.</p>
-      <div>
+      <div class="button-position">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
+    <ng-template matStepperIcon="description">
+      <mat-icon>description</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="cloud_upload">
+      <mat-icon>cloud_upload</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="share_location">
+      <mat-icon>share_location</mat-icon>
+    </ng-template>
+    <ng-template matStepperIcon="check_circle">
+      <mat-icon>check_circle</mat-icon>
+    </ng-template>
+  
   </mat-stepper>
  
+  
 </div>

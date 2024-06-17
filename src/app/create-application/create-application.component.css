@@ -33,4 +33,19 @@
   ::ng-deep .leaflet-container{
     border-radius: 20px;
   }
- 
+  .button-position{
+    display: flex;
+    justify-content: space-between;
+  }
+  .button-position1{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .button-position button{
+    background-color: rgba(15, 104, 178, 1);
+    color:white;
+  }
+  .button-position1 button{
+    background-color: rgba(15, 104, 178, 1);
+    color:white;
+  }

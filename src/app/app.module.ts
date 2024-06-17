@@ -21,7 +21,7 @@ import { MyApplicationsComponent } from './my-applications/my-applications.compo
 import { CardComponent } from './card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { CreateApplicationComponent } from './create-application/create-application.component';
+import { CreateApplicationComponent, PreviewDialog } from './create-application/create-application.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -41,7 +41,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MyApplicationsComponent,
     CardComponent,
     CreateApplicationComponent,
-    TermsAndconditionsDialog
+    TermsAndconditionsDialog,
+    PreviewDialog
   ],
   imports: [
     BrowserModule,
