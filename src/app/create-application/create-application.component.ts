@@ -91,7 +91,8 @@ export class CreateApplicationComponent {
   });
 
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    identityProof: ['', Validators.required],
+    docRefId:['',Validators.required]
   });
 
   titles:any=[
@@ -100,67 +101,29 @@ export class CreateApplicationComponent {
     {id: 3,name: "Missus"}
   ];
   genders:any=[
-    {
-      id:1,
-      name:"Male"
-    },
-    {
-      id:2,
-      name:"Female"
-    },
-    {
-      id:3,
-      name:"Others"
-    }
+    {id:1,name:"Male"},
+    {id:2,name:"Female"},
+    {id:3,name:"Others"}
   ];
   nationalities:any=[
-    {
-      id:1,
-      name:"French"
-    },
-    {
-      id:2,
-      name:"Egyptian"
-    },
+    {id:1,name:"French"},
+    {id:2,name:"Egyptian"},
   ];
 
   confirmations:any=[
-    {
-      id:1,
-      name:"Oui",
-      value:true
-    },
-    {
-      id:2,
-      name:"Non",
-      value:false
-    }
+    {id:1,name:"Oui",value:true},
+    {id:2,name:"Non",value:false}
   ];
   birthPlaces:any=[
-    {
-      id:1,
-      name:"Rabat-agdal",
-    },
-    {
-      id:2,
-      name:"Casa-Maarif",
-    }
+    {id:1,name:"Rabat-agdal",},
+    {id:2,name:"Casa-Maarif",}
   ];
   birthPay:any=[
-    {
-      id:1,
-      name:"France",
-    },
-    {
-      id:2,
-      name:"Egypt",
-    }
+    {id:1,name:"France",},
+    {id:2,name:"Egypt",}
   ];
   regions:any=[
-    {
-      id:1,
-      name:"Rabat Sale Kenitra",
-    }
+    {id:1,name:"Rabat Sale Kenitra"}
   ];
   provinces:any=[
     {id:1,name:"Kenitra",},
@@ -171,24 +134,11 @@ export class CreateApplicationComponent {
     {id:2,name:"Rabat"}
   ];
   zones:any=[
-    {id:1,name:"Ben Mansour",},
-    {
-      id:2,
-      name:"Mansara",
-    },
-    {
-      id:3,
-      name:"Mograne"
-    },
-    {
-      id:3,
-      name:"Assam"
-    },
-    {
-      id:3,
-      name:"Mehdia"
-    }
-    
+    {id:1,name:"Ben Mansour"},
+    {id:2,name:"Mansara"},
+    {id:3,name:"Mograne"},
+    {id:4,name:"Assam"},
+    {id:5,name:"Mehdia"}
   ];
 
   postalCodes:any=[
@@ -220,8 +170,48 @@ export class CreateApplicationComponent {
     {id: 1,name: "juge de tuteur"},
     {id: 1,name: "juge de tuteur"}
   ]
+  idProofType:any=[
+    {id: 1,name: "Reference Identity Proof"}
+  ]
 
   constructor(private _formBuilder: FormBuilder,public dialog: MatDialog) {}
+
+  public imageId!: any;
+  public selectedFile!: File;
+  // 2nd step upload documents
+  onFileSelected(id: string, event: any) {
+    this.imageId = id;
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile.name, id);
+    console.log(this.selectedFile, id);
+  }
+
+  uploadImage1() {
+    // if (this.selectedFile) {
+    //   console.log(this.selectedFile);
+  
+    //   this.appraisalService.uploadImageInDb(this.selectedFile).pipe(
+    //     tap((response: any) => {
+    //       let returnObject: any = response;
+    //       let uuid = returnObject.message;
+    //       console.log(uuid);
+    //       console.log(this.imageId);
+          
+    //       if (this.imageId) {
+    //         console.log(this.imageId);
+    //         console.log(uuid);
+    //         this.thirdFormGroup.get(this.imageId)?.setValue(uuid);
+    //       }
+    //     }),
+    //     catchError((error: any) => {
+    //       console.error('Error:', error);
+    //       throw error; // Rethrow the error to propagate it to the subscriber
+    //     })
+    //   ).subscribe();
+    // }
+  }
+  
+
 
   // map 
   ngOnInit(): void{

@@ -292,12 +292,65 @@
     <mat-step [stepControl]="secondFormGroup"label="Upload Documents" state="cloud_upload">
       <form [formGroup]="secondFormGroup">
         <!-- <ng-template matStepLabel>Upload Documents</ng-template> -->
-        <mat-form-field appearance="outline">
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-        </mat-form-field>
+        
+        <ng-template matStepLabel>Upload Documents</ng-template>
+        <div class="row mb-3">
+          <div class="col-sm-12 col-md-6">
+           <div class="doc-box">
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+              <mat-label>Identity Proof</mat-label>
+              <mat-select formControlName="identityProof">
+                <mat-option *ngFor="let proof of idProofType" [value]="proof.name">
+                  {{proof.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+              <mat-form-field appearance="outline" style="width:100%;">
+              <mat-label>Document Reference ID</mat-label>
+              <input matInput placeholder="Enter id" formControlName="docRefId" required>
+            </mat-form-field>
+            <div class="file-upload-container">
+              <label for="vehiclePic1" class="file-upload-label">Browse</label>
+              <input type="file" #fileInput1 accept="image/*" id="vehiclePic1"
+                (change)="onFileSelected(fileInput1.id, $event)" />
+            </div>
+            <div class="d-flex justify-content-end mb-2 gap-2">
+              <button mat-flat-button color="primary">Preview</button>
+              <button mat-flat-button color="warn">Delete</button>
+            </div>
+           </div>
+           <div class="doc-box">
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+              <mat-label>Identity Proof</mat-label>
+              <mat-select formControlName="identityProof">
+                <mat-option *ngFor="let proof of idProofType" [value]="proof.name">
+                  {{proof.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+              <mat-form-field appearance="outline" style="width:100%;">
+              <mat-label>Document Reference ID</mat-label>
+              <input matInput placeholder="Enter id" formControlName="docRefId" required>
+            </mat-form-field>
+            <div class="file-upload-container">
+              <label for="vehiclePic1" class="file-upload-label">Browse</label>
+              <input type="file" #fileInput1 accept="image/*" id="vehiclePic1"
+                (change)="onFileSelected(fileInput1.id, $event)" />
+            </div>
+            <div class="d-flex justify-content-end mb-2 gap-2">
+              <button mat-flat-button color="primary">Preview</button>
+              <button mat-flat-button color="warn">Delete</button>
+            </div>
+           </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 align-items-center d-flex justify-content-center">
+            <p>preview</p>
+          </div>
+        </div>
         <div class="button-position">
           <div class="col-sm-10">
+        
           <button mat-button matStepperPrevious>Back</button>
         </div>
           <div class="col-sm-2 d-flex justify-content-between">
