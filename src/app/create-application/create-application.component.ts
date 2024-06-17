@@ -25,6 +25,7 @@ export class CreateApplicationComponent {
   private map!: L.Map;
   private center!: L.LatLng;
   private markers: L.Marker[] = [];
+  showRecommend:boolean=true;
   @ViewChild('stepper') stepper: MatStepper | any;
  
   listOfCoordinates:any=[];
@@ -46,10 +47,12 @@ export class CreateApplicationComponent {
     { place: 'LB Nagar', latitude: 17.3457, longitude: 78.5522},
   ];
   showRecommendCenters(){
+    this.showRecommend=true;
     this.listOfCoordinates=[];
     this.listOfCoordinates=[...this.initialListOfCoordinates]
   }
   showNearByCenters(){
+    this.showRecommend=false;
     this.listOfCoordinates=[];
     this.listOfCoordinates=[...this.nearbyCenterCoordinates]
   }

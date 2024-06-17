@@ -309,7 +309,7 @@
               <mat-label>Document Reference ID</mat-label>
               <input matInput placeholder="Enter id" formControlName="docRefId" required>
             </mat-form-field>
-            <div class="file-upload-container">
+            <div class="file-upload-container text-center">
               <label for="vehiclePic1" class="file-upload-label">Browse</label>
               <input type="file" #fileInput1 accept="image/*" id="vehiclePic1"
                 (change)="onFileSelected(fileInput1.id, $event)" />
@@ -332,7 +332,7 @@
               <mat-label>Document Reference ID</mat-label>
               <input matInput placeholder="Enter id" formControlName="docRefId" required>
             </mat-form-field>
-            <div class="file-upload-container">
+            <div class="file-upload-container text-center">
               <label for="vehiclePic1" class="file-upload-label">Browse</label>
               <input type="file" #fileInput1 accept="image/*" id="vehiclePic1"
                 (change)="onFileSelected(fileInput1.id, $event)" />
@@ -368,13 +368,13 @@
         <div class="col-sm-12">
           <!-- <button mat-button (click)="resetMap()">Reset Map</button> -->
           <!-- <button mat-button (click)="setNearbyCoordinates()">Nearby</button> -->
-          <button mat-button (click)="showRecommendCenters()">Recommended Centers</button>
-          <button mat-button (click)="showNearByCenters()">NearbyCenters</button>
+          <button mat-button [ngClass]="showRecommend?'button-highlight':''" (click)="showRecommendCenters()">Recommended Centers</button>
+          <button mat-button [ngClass]="showRecommend?'':'button-highlight'"(click)="showNearByCenters()">NearbyCenters</button>
         </div>
         <div class="col-sm-7">
-          <mat-nav-list>
-              <mat-radio-button *ngFor="let item of listOfCoordinates">
-                <div class="d-flex justify-content-between p-1 list-style" (click)="changeToNearbyCoordinates(item.latitude, item.longitude,item.place)">                       
+          <mat-nav-list class="map-list">
+              <mat-radio-button *ngFor="let item of listOfCoordinates" (click)="changeToNearbyCoordinates(item.latitude, item.longitude,item.place)">
+                <div class="d-flex justify-content-between p-1 list-style">                       
                   <div class="d-flex flex-column">
                     <div class="d-flex">
                       <span>
