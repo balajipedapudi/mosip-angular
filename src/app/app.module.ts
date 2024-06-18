@@ -31,7 +31,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
-
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    CarouselModule.forRoot(),
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

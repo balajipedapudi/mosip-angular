@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { MatStepper } from '@angular/material/stepper';
 import * as L from 'leaflet';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { CarouselComponent } from 'ngx-bootstrap/carousel';
+
 export interface DialogData {
  next: any;
  details:{},
@@ -56,10 +58,67 @@ export class CreateApplicationComponent {
     this.listOfCoordinates=[];
     this.listOfCoordinates=[...this.nearbyCenterCoordinates]
   }
-  
+  // carousel
+  itemsPerSlide = 6;
+  singleSlideOffset = false;
+ noWrap=false;
+  showMorningSlot:boolean=true;
+  slotList:any=[];
+ morningSlotList=[
+  {slotTime:'09:00-09:15',slots:3},
+  {slotTime:'09:15-09:30',slots:3},
+  {slotTime:'09:30-09:45',slots:10},
+  {slotTime:'09:45-10:00',slots:5},
+  {slotTime:'10:00-10:15',slots:2},
+  {slotTime:'10:15-10:30',slots:6},
+  {slotTime:'10:30-10:45',slots:3},
+  {slotTime:'10:45-11:00',slots:3},
+  {slotTime:'11:00-11:15',slots:3},
+  {slotTime:'11:15-11:30',slots:3},
+  {slotTime:'11:30-11:45',slots:3},
+  {slotTime:'11:45-12:00',slots:3},
+  {slotTime:'12:00-12:15',slots:3},
+  {slotTime:'12:15-12:30',slots:3},
+  {slotTime:'12:30-12:45',slots:3},
+  {slotTime:'12:45-01:00',slots:3}
+ ]
+ afternoonSlotList=[
+  {slotTime:'02:00-02:15',slots:3},
+  {slotTime:'02:15-02:30',slots:3},
+  {slotTime:'02:30-02:45',slots:10},
+  {slotTime:'02:45-03:00',slots:5},
+  {slotTime:'03:00-03:15',slots:2},
+  {slotTime:'03:15-03:30',slots:6},
+  {slotTime:'03:30-03:45',slots:3},
+  {slotTime:'03:45-04:00',slots:3},
+  {slotTime:'04:00-04:15',slots:3},
+  {slotTime:'04:15-04:30',slots:3},
+  {slotTime:'04:30-04:45',slots:3},
+  {slotTime:'04:45-05:00',slots:3},
+  {slotTime:'05:00-05:15',slots:3},
+  {slotTime:'05:15-05:30',slots:3},
+  {slotTime:'05:30-05:45',slots:3},
+  {slotTime:'05:45-06:00',slots:3}
+ ]
+showMorningList(){
+
+  this.showMorningSlot=true;
+  this.slotList=[];
+  this.slotList=this.morningSlotList;
+  this.selectedTimeIndex=0;
+  this.selectedTimeSlot=this.slotList[this.selectedTimeIndex].slotTime
+}
+showAfternoonList(){
+  this.showMorningSlot=false;
+  this.slotList=[];
+this.slotList=this.afternoonSlotList;
+this.selectedTimeIndex=0;
+  this.selectedTimeSlot=this.slotList[this.selectedTimeIndex].slotTime
+}
+  // carousel end
   firstFormGroup = this._formBuilder.group({
-    title: ['', Validators.required],
-    name:['', Validators.required],
+    title: [''],
+    name:[''],
     gender:[''],
     date:[''],
     nationality:[''],
@@ -94,8 +153,8 @@ export class CreateApplicationComponent {
   });
 
   secondFormGroup = this._formBuilder.group({
-    identityProof: ['', Validators.required],
-    docRefId:['',Validators.required]
+    identityProof: [''],
+    docRefId:['']
   });
 
   titles:any=[
@@ -217,8 +276,58 @@ export class CreateApplicationComponent {
 
 
   // map 
+  @ViewChild('carousel', { static: false }) carousel!: CarouselComponent;
+  nextSlide() {
+    this.carousel.nextSlide();
+  }
+
+  previousSlide() {
+    this.carousel.previousSlide();
+  }
+  dateList: { name: string, date: string }[] = [];
+  generateDateList() {
+    const currentDate = new Date();    
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    for (let day = currentDate.getDate(); day <=daysInMonth+31; day++) {
+      const date = new Date(currentYear, currentMonth, day);
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+      const formattedDate = date.toLocaleDateString('en-US');
+
+      this.dateList.push({ name: dayName, date: formattedDate });
+    }
+  }
+  selectedDate:any;
+  selectedDay:any;
+  isShowMap:boolean=true;
+  selectedTimeSlot:any;
+  selectedDateIndex:any=0;
+  selectedTimeIndex:any=0;
+  showBookAppointmentData(){
+    this.isShowMap=false;
+  }
+  showBookMapData(){
+    this.isShowMap=true;
+  }
+  saveDate(details:any,index:any){
+    this.selectedDateIndex=index;
+    this.selectedDate=details.date;
+    this.selectedDay=details.name;
+    
+  }
+  saveTimeSlots(details:any,index:any){
+    this.selectedTimeIndex=index;
+this.selectedTimeSlot=details.slotTime
+  }
   ngOnInit(): void{
-    this.listOfCoordinates=this.initialListOfCoordinates
+    this.slotList=this.morningSlotList;
+    this.selectedTimeSlot=this.slotList[this.selectedTimeIndex].slotTime;
+    this.listOfCoordinates=this.initialListOfCoordinates;
+    this.selectedDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString('en-US');
+    this.selectedDay= new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString('en-US', { weekday: 'long' });
+    this.generateDateList();
   }
  
   ngAfterViewInit(): void {
@@ -229,6 +338,7 @@ export class CreateApplicationComponent {
     });
   }
   private initMap(): void {
+    
     this.map = L.map('map', {
       center: [12.9716, 77.5946],
       zoom: 13
@@ -242,6 +352,7 @@ export class CreateApplicationComponent {
     L.marker([12.9716, 77.5946]).addTo(this.map)
     .bindPopup('name')
     .openPopup();
+   
   }
 
   changeToNearbyCoordinates(latitude: number, longitude: number,place:string): void {

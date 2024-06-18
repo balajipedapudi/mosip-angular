@@ -18,7 +18,7 @@
           <div class="col-sm-4">
             <mat-form-field appearance="outline" style="width:100%;">
               <mat-label>Name</mat-label>
-              <input matInput placeholder="Last name, First name" formControlName="name" required>
+              <input matInput placeholder="Last name, First name" formControlName="name">
             </mat-form-field>
           </div>
           <div class="col-sm-4">
@@ -295,9 +295,10 @@
         
         <ng-template matStepLabel>Upload Documents</ng-template>
         <div class="row mb-3">
-          <div class="col-sm-12 col-md-6">
-           <div class="doc-box">
-            <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+          <div class="col-sm-12">
+           <div class="doc-box d-flex">
+            <div class="col-sm-6">
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;" class="docId-field">
               <mat-label>Identity Proof</mat-label>
               <mat-select formControlName="identityProof">
                 <mat-option *ngFor="let proof of idProofType" [value]="proof.name">
@@ -307,9 +308,10 @@
             </mat-form-field>
               <mat-form-field appearance="outline" style="width:100%;">
               <mat-label>Document Reference ID</mat-label>
-              <input matInput placeholder="Enter id" formControlName="docRefId" required>
+              <input matInput placeholder="Enter id" formControlName="docRefId">
             </mat-form-field>
-            <div class="file-upload-container text-center">
+            <div class="d-flex justify-content-between align-items-center">
+            <div class="file-upload-container text-center" style="width:60%">
               <label for="vehiclePic1" class="file-upload-label">Browse</label>
               <input type="file" #fileInput1 accept="image/*" id="vehiclePic1"
                 (change)="onFileSelected(fileInput1.id, $event)" />
@@ -318,9 +320,15 @@
               <button mat-flat-button color="primary">Preview</button>
               <button mat-flat-button color="warn">Delete</button>
             </div>
+          </div>
+          </div>
+          <div class="col-sm-6 align-items-center d-flex justify-content-center">
+            <p>preview</p>
+          </div>
            </div>
-           <div class="doc-box">
-            <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;">
+           <div class="doc-box d-flex">
+            <div class="col-sm-6">
+            <mat-form-field floatLabel="auto" appearance="outline" style="width:100%;" class="docId-field">
               <mat-label>Identity Proof</mat-label>
               <mat-select formControlName="identityProof">
                 <mat-option *ngFor="let proof of idProofType" [value]="proof.name">
@@ -330,9 +338,10 @@
             </mat-form-field>
               <mat-form-field appearance="outline" style="width:100%;">
               <mat-label>Document Reference ID</mat-label>
-              <input matInput placeholder="Enter id" formControlName="docRefId" required>
+              <input matInput placeholder="Enter id" formControlName="docRefId">
             </mat-form-field>
-            <div class="file-upload-container text-center">
+            <div class="d-flex justify-content-between align-items-center">
+            <div class="file-upload-container text-center" style="width:60%">
               <label for="vehiclePic1" class="file-upload-label">Browse</label>
               <input type="file" #fileInput1 accept="image/*" id="vehiclePic1"
                 (change)="onFileSelected(fileInput1.id, $event)" />
@@ -341,13 +350,17 @@
               <button mat-flat-button color="primary">Preview</button>
               <button mat-flat-button color="warn">Delete</button>
             </div>
+          </div>
+          </div>
+          <div class="col-sm-6 align-items-center d-flex justify-content-center">
+            <p>preview</p>
+          </div>
            </div>
           </div>
 
-          <div class="col-sm-12 col-md-6 align-items-center d-flex justify-content-center">
-            <p>preview</p>
-          </div>
+         
         </div>
+
         <div class="button-position">
           <div class="col-sm-10">
         
@@ -364,7 +377,7 @@
     <mat-step label="Book Appointment" state="share_location">
       <!-- <ng-template matStepLabel>Book Appointment</ng-template> -->
       <!-- <p>You are now done.</p> -->
-      <div class="row">
+      <div class="row" [ngClass]="{'show-map':isShowMap==false}">
         <div class="col-sm-12">
           <!-- <button mat-button (click)="resetMap()">Reset Map</button> -->
           <!-- <button mat-button (click)="setNearbyCoordinates()">Nearby</button> -->
@@ -402,12 +415,87 @@
         <div class="col-sm-5">
             <div id="map"></div>
         </div>
-        
+        <div class="col-sm-12 button-position">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="showBookAppointmentData()">Continue</button>
+        </div>
     </div>
+    <div  [ngClass]="{'show-map':isShowMap==true}">
+            <!-- carousel -->
+            <div class="row p-3">
+              <div class="carousel-card">
+                <h5 class="carousel-head">Book Appointment: Please note that application details cannot be modified once appointment is booked for it.</h5>
+                <hr class="horizontal-ruler">
+                <div class="d-flex">
+              <div class="col-sm-1 d-flex align-items-center justify-content-center">
+                <button mat-button class="nex-prev-btn" (click)="previousSlide()">Previous</button>
+              </div>
+              <div class="col-sm-10">
+                <carousel #carousel [itemsPerSlide]="7"
+                [singleSlideOffset]="singleSlideOffset"
+                [startFromIndex]="0"
+                [interval]="0"
+                [showIndicators]="false"
+                [noWrap]="!noWrap"class="carousel-button"
+                >
+        <slide *ngFor="let slide of dateList; let index = index">
+          <div class="p-3">
+            <div class="date-card d-flex flex-column align-items-center"(click)="saveDate(slide,index)"
+            [ngClass]="{'selected-slide': selectedDateIndex === index}">
+              <h5>{{slide.date}}</h5>
+              <h5>{{slide.name}}</h5>
+              <h5>56</h5>
+              <h5>Available slots</h5>
+            </div>
+          </div>
+        </slide>
+      </carousel>
+              </div>
+              <div class="col-sm-1 d-flex align-items-center justify-content-center">
+                <button mat-button class="nex-prev-btn" (click)="nextSlide()">Next</button>
+              </div>
+            </div>
+            </div>
+            </div>
+             <!-- carousel end -->
+              <div class="row p-3">
+                <div class="col-sm-12">
+                  <button mat-button [ngClass]="showMorningSlot?'slot-button-highlight':''" (click)="showMorningList()">Morning</button>
+                <button mat-button [ngClass]="showMorningSlot?'':'slot-button-highlight'"(click)="showAfternoonList()">Afternoon</button>
+              
+                </div>
+              <div class="col-sm-8">
+              <table class="table-fields row">
+                <tr
+                  class="table-fields-item col-sm-3 d-flex flex-column"
+                  *ngFor="let item of slotList; let k = index"
+                  (click)="saveTimeSlots(item,k)"
+                  [ngClass]="{'selected-row': selectedTimeIndex === k}"
+                >
+                  <td>{{ item.slotTime }}</td>
+                  <td class="slot-color">
+                    {{item.slots}} slots
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-4">
+              <div class="slot-details-card">
+                <div class="slot-details">
+                <h5>{{selectedDate}},{{selectedDay}}</h5>
+                <h5>{{selectedTimeSlot}} {{showMorningSlot?'Morning':'Afternoon'}}</h5>
+              </div>
+      
+              </div>
+            </div>
+            
+          </div>
+             
     <div class="button-position">
-      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="showBookMapData()">Back</button>
       <button mat-button matStepperNext>Next</button>
     </div>
+  </div>
       <!-- <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>

@@ -60,11 +60,11 @@
 }
 
 .file-upload-label{
-  padding: 10px 20px 10px 20px;
+  padding: 5px 20px 5px 20px;
   cursor: pointer;
   /* width: 300px; */
   width: 100%;
-  height: 48px;
+  height: 36px;
   border-radius: 5px ;
   border: 1px solid #6E67AD;
   background: #FFF;
@@ -116,7 +116,7 @@ input[type="file"]{
 }
   .doc-box{
     margin-top:10px;
-    box-shadow: 0 2px 2px 0 lightgray;
+    box-shadow: 0 4px 4px 0 lightgray;
     border-radius: 10px;
     padding: 10px;
   }
@@ -130,3 +130,107 @@ color:rgba(15, 104, 178, 1) !important;
   ::ng-deep .mat-step-header.cdk-program-focused{
     background-color: transparent !important;
   }
+  /* dates */
+  .date-card{
+    background-color: white;
+    box-shadow: 1px 4px 4px 1px lightgray;
+    height:100px;
+    border-radius:10px;
+    padding:7px;
+  }
+  .date-card:hover{
+    border:1px solid rgba(15, 104, 178, 1);
+    cursor: pointer;
+  }
+  .selected-slide{
+    border:1px solid rgba(15, 104, 178, 1);
+  }
+  .selected-row{
+    background-color: rgba(15, 104, 178, 1);
+    color:white;
+    .slot-color{
+      color:white;
+    }
+  }
+  .date-card h4{
+    margin-bottom: 0px !important;
+  }
+  .date-card h5{
+    margin-bottom: 0px !important;
+  }
+  .time-selection__name-list {
+    padding: 0px 2rem;
+    list-style: none;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+  .table-fields tr{
+    border:1px solid lightgray;
+    /* padding:0px 30px; */
+  }
+  .table-fields-item {
+    padding: 15px 0 15px 10px;
+    min-height: 50px;
+    /* width: 100%; */
+    font-size: 0.8rem;
+  }
+  .table-fields tr:hover{
+    /* background-color:rgba(15, 104, 178, 1) ; */
+    border:1px solid rgba(15, 104, 178, 1);
+    cursor: pointer;
+    /* color:white !important;
+    .slot-color{
+      color:white;
+    } */
+  }
+  ::ng-deep .carousel-item{
+margin-right: 0px !important;
+  }
+  .slot-color{
+    color:rgba(15, 104, 178, 1);
+  }
+  .slot-button-highlight{
+    /* border-bottom: 1px solid blue; */
+    color:rgba(15, 104, 178, 1) !important;
+  }
+  .slot-details-card{
+    border: 1px solid lightgray;
+    height:304px;
+  }
+  .slot-details{
+    padding: 5px 10px;
+    background-color: rgba(15, 104, 178, 1);
+    color:white;
+  }
+  .slot-details h5{
+    margin-bottom: 0px;
+  }
+.show-map{
+  display: none;
+}
+  /* carousel */
+  .carousel-card{
+    box-shadow:1px 2px 2px 1px lightgray;
+    /* border:1px solid lightgray; */
+    padding:0px;
+  }
+ .carousel-head{
+  color:rgba(15, 104, 178, 1);
+  margin-bottom: 0px !important;
+  padding-left:10px;
+ }
+  .carousel-button ::ng-deep .carousel-control-next,
+  .carousel-button ::ng-deep .carousel-control-prev {
+  display: none;
+}
+.horizontal-ruler{
+  margin: 0px;
+}
+.nex-prev-btn{
+  color:rgba(15, 104, 178, 1) !important;
+}
+.docId-field ::ng-deep .mat-mdc-form-field-subscript-wrapper{
+  display: none;
+}
