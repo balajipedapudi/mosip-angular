@@ -502,12 +502,36 @@
       </div> -->
     </mat-step>
     <mat-step label="Confirmation" state="check_circle">
-    <!-- <mat-step> -->
-      <!-- <ng-template matStepLabel>Confirmation</ng-template> -->
-      <p>You are now done.</p>
+      <div class="row gy-2">
+        <div class="col-sm-12 d-flex justify-content-center align-items-center confirm-screen-header">
+          <p>1800888393939 : The Pre-Registration id and Appointment details have been sent to the registered phone and emailId</p>
+        </div>
+        <div class="col-sm-12 confirm-screen-body mb-3 d-flex ">
+          <div class="col-sm-6 d-flex flex-column align-items-center">
+            <p>Registered Name</p>
+            <p>Center Name</p>
+            <br>
+            <p>Pre Registration ID</p>
+            <p>Appointment Date & Time</p>
+            <p>Center Contact Number</p>
+          </div>
+          <div class="col-sm-6 d-flex flex-column align-items-start">
+            <p>Balaji Pedapudi</p>
+            <p>Dsl mall</p>
+            <br>
+            <p>1800888393939</p>
+            <p>7 th June 2024 12.15 PM</p>
+            <p>080-17007666</p>
+          </div>
+        </div>
+      </div>
+
       <div class="button-position">
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <div class="d-flex gap-2">
+        <button mat-button style="background-color:rgba(0, 0, 0, 0.596); color: white;">Print</button>
+        <button mat-button >Download</button>
+        </div>
       </div>
     </mat-step>
     <ng-template matStepperIcon="description">
