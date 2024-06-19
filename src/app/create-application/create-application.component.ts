@@ -290,12 +290,20 @@ this.selectedTimeIndex=0;
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+// const nextMonth= new Date(currentDate.getFullYear(), currentDate.getMonth()+1, 1);
+const nextMonth= (new Date().getMonth()+1)%12 + 1
+const daysInNextMonth=new Date(currentYear, nextMonth+1,0).getDate();
 
-    for (let day = currentDate.getDate(); day <=daysInMonth+31; day++) {
+
+    for (let day = currentDate.getDate(); day <=daysInMonth+daysInNextMonth; day++) {
       const date = new Date(currentYear, currentMonth, day);
       const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
-      const formattedDate = date.toLocaleDateString('en-US');
-
+      // const formattedDate = date.toLocaleDateString('en-US');
+      const formattedDate=date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      });
       this.dateList.push({ name: dayName, date: formattedDate });
     }
   }
@@ -325,7 +333,11 @@ this.selectedTimeSlot=details.slotTime
     this.slotList=this.morningSlotList;
     this.selectedTimeSlot=this.slotList[this.selectedTimeIndex].slotTime;
     this.listOfCoordinates=this.initialListOfCoordinates;
-    this.selectedDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString('en-US');
+    this.selectedDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    })
     this.selectedDay= new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).toLocaleDateString('en-US', { weekday: 'long' });
     this.generateDateList();
   }
@@ -338,7 +350,7 @@ this.selectedTimeSlot=details.slotTime
     });
   }
   private initMap(): void {
-    
+    if(!this.map){
     this.map = L.map('map', {
       center: [12.9716, 77.5946],
       zoom: 13
@@ -350,9 +362,9 @@ this.selectedTimeSlot=details.slotTime
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
     L.marker([12.9716, 77.5946]).addTo(this.map)
-    .bindPopup('name')
+    .bindPopup('Banglore')
     .openPopup();
-   
+  }
   }
 
   changeToNearbyCoordinates(latitude: number, longitude: number,place:string): void {

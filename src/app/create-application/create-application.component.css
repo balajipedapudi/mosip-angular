@@ -189,7 +189,7 @@ color:rgba(15, 104, 178, 1) !important;
 margin-right: 0px !important;
   }
   .slot-color{
-    color:rgba(15, 104, 178, 1);
+    color:rgb(15, 178, 77);
   }
   .slot-button-highlight{
     /* border-bottom: 1px solid blue; */
@@ -217,7 +217,7 @@ margin-right: 0px !important;
     padding:0px;
   }
  .carousel-head{
-  color:rgba(15, 104, 178, 1);
+  color:#AE0D0D;
   margin-bottom: 0px !important;
   padding-left:10px;
  }
@@ -237,7 +237,7 @@ margin-right: 0px !important;
 
   .confirm-screen-header{
     background-color: rgba(207, 239, 202, 1);
-    color: rgba(22, 116, 6, 1);
+    color: #088E2E;
     padding: 10px 20px;
     border-radius: 10px 10px 0px 0px;
   }
@@ -253,3 +253,14 @@ margin-right: 0px !important;
     border-radius: 0px 0px 10px 10px;
     height: fit-content;
   }
+  .delete-button{
+    background-color: #AE0D0D !important;
+    color:white !important;
+  }
+  .preview-button{
+    background-color: rgba(15, 104, 178, 1) !important;
+    color:white !important;
+  }
+.center-details span{
+  font-size:11px;
+}

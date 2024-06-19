@@ -317,8 +317,8 @@
                 (change)="onFileSelected(fileInput1.id, $event)" />
             </div>
             <div class="d-flex justify-content-end mb-2 gap-2">
-              <button mat-flat-button color="primary">Preview</button>
-              <button mat-flat-button color="warn">Delete</button>
+              <button mat-flat-button class="preview-button">Preview</button>
+              <button mat-flat-button class="delete-button">Delete</button>
             </div>
           </div>
           </div>
@@ -347,8 +347,8 @@
                 (change)="onFileSelected(fileInput1.id, $event)" />
             </div>
             <div class="d-flex justify-content-end mb-2 gap-2">
-              <button mat-flat-button color="primary">Preview</button>
-              <button mat-flat-button color="warn">Delete</button>
+              <button mat-flat-button class="preview-button">Preview</button>
+              <button mat-flat-button class="delete-button">Delete</button>
             </div>
           </div>
           </div>
@@ -377,7 +377,7 @@
     <mat-step label="Book Appointment" state="share_location">
       <!-- <ng-template matStepLabel>Book Appointment</ng-template> -->
       <!-- <p>You are now done.</p> -->
-      <div class="row" [ngClass]="{'show-map':isShowMap==false}">
+      <div class="row" [ngClass]="{'show-map':!isShowMap}">
         <div class="col-sm-12">
           <!-- <button mat-button (click)="resetMap()">Reset Map</button> -->
           <!-- <button mat-button (click)="setNearbyCoordinates()">Nearby</button> -->
@@ -388,7 +388,7 @@
           <mat-nav-list class="map-list">
               <mat-radio-button *ngFor="let item of listOfCoordinates" (click)="changeToNearbyCoordinates(item.latitude, item.longitude,item.place)">
                 <div class="d-flex justify-content-between p-1 list-style">                       
-                  <div class="d-flex flex-column">
+                  <div class="d-flex flex-column center-details">
                     <div class="d-flex">
                       <span>
                         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="location_on" class="material-symbols-outlined icon-size"></mat-icon>
@@ -402,7 +402,7 @@
                     <span>Ph-no 9876787650</span>
                     </div>
                   </div>
-                  <div class="d-flex flex-column">
+                  <div class="d-flex flex-column center-details">
                     <span>Timing : 11:00AM - 6:00PM</span>
                     <span>Lunch : 1:00PM - 2:00PM</span>
                     <span>Currently Opened</span>
@@ -420,7 +420,7 @@
           <button mat-button (click)="showBookAppointmentData()">Continue</button>
         </div>
     </div>
-    <div  [ngClass]="{'show-map':isShowMap==true}">
+    <div  [ngClass]="{'show-map':isShowMap}">
             <!-- carousel -->
             <div class="row p-3">
               <div class="carousel-card">
@@ -507,7 +507,10 @@
           <p>1800888393939 : The Pre-Registration id and Appointment details have been sent to the registered phone and emailId</p>
         </div>
         <div class="col-sm-12 confirm-screen-body mb-3 d-flex ">
-          <div class="col-sm-6 d-flex flex-column align-items-center">
+          <div class="col-sm-3">
+
+          </div>
+          <div class="col-sm-4 d-flex flex-column align-items-start">
             <p>Registered Name</p>
             <p>Center Name</p>
             <br>
@@ -515,8 +518,8 @@
             <p>Appointment Date & Time</p>
             <p>Center Contact Number</p>
           </div>
-          <div class="col-sm-6 d-flex flex-column align-items-start">
-            <p>Balaji Pedapudi</p>
+          <div class="col-sm-5 d-flex flex-column align-items-start">
+            <p>Muni From Tuni</p>
             <p>Dsl mall</p>
             <br>
             <p>1800888393939</p>
